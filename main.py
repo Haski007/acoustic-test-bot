@@ -10,7 +10,7 @@ import Generator
 import Messages
 import Tables
 
-bot = telebot.TeleBot(config.TOKEN)
+bot = telebot.TeleBot(config.DEV_TOKEN)
 
 print(bot.get_me())
 
@@ -73,9 +73,9 @@ def generate_handler(message):
 
 
 #################################### Calculation handlers #####################################
-@bot.message_handler(commands=["obtacle_passing"])
-def obracle_passing_handler(message):
-	answer = Calculations.obtacle_passing(message)
+@bot.message_handler(commands=["obtacle"])
+def obtacle_level_handler(message):
+	answer = Calculations.obtacle_level(message)
 	bot.send_message(chat_id=message.chat.id, text=answer)
 	log(message, answer)
 
@@ -95,7 +95,8 @@ def callback_inline(call):
 		# Buttons set
 		tables_button = types.InlineKeyboardButton(text="Tables", callback_data="tables")
 		calc_button = types.InlineKeyboardButton(text="Calculations", callback_data="calculations")
-		keyboard_main.add(tables_button, calc_button)
+		generator_button = types.InlineKeyboardButton(text="Noize Generator", callback_data="generator")
+		keyboard_main.add(tables_button, calc_button, generator_button)
 
 		bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
 							  text="Choose your destiny...", reply_markup=keyboard_main)

@@ -3,9 +3,7 @@
 from telebot import types
 import math
 
-def get_args(text):
-	res = str(text).split(sep=" ")
-	return res
+
 
 def call_handler(call, bot):
 	keyboard = types.InlineKeyboardMarkup()
@@ -15,7 +13,7 @@ def call_handler(call, bot):
 	keyboard.add(main_button)
 
 	formulas = """Щоб зробити розрахунки:
-	/obtacle_passing [уровень шума до преграды] [площа перешкоди] [ізоляція повітряного шуму] [поправка в Дб]
+	/obtacle_level [уровень шума до преграды] [площа перешкоди] [ізоляція повітряного шуму] [поправка в Дб]
 	(порахую рівень шуму мови при проходженні через перешкоду.)"""
 
 	bot.edit_message_text(chat_id=call.message.chat.id,
@@ -23,7 +21,12 @@ def call_handler(call, bot):
 						  text=formulas,
 						  reply_markup=keyboard)
 
-def obtacle_passing(message):
+
+def get_args(text):
+	res = str(text).split()
+	return res
+
+def obtacle_level(message):
 	args = get_args(message.text)
 	try:
 		L0 = float(args[1])
@@ -35,9 +38,3 @@ def obtacle_passing(message):
 		return L
 	except:
 		return "ArgsError"
-
-
-
-
-
-
