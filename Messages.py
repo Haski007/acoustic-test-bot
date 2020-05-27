@@ -16,7 +16,9 @@ def help(message):
 	# Here is list of all commands of my bot
 	commands = [
 		"\t/start - to start communication with bot\n",
-		"\t/help - to get all instructions.\n"
+		"\t/help - to get  all enable instructions.\n"
+		"\t/generate - to generate white noise with default options.\n"		
+		"\t/superpose - to make superimposition with your voices.\n"
 	]
 
 	for command in commands:
