@@ -11,7 +11,7 @@ import Superpose
 import Tables
 import Voices
 
-bot = telebot.TeleBot(Config.DEV_TOKEN)
+bot = telebot.TeleBot(Config.TOKEN)
 
 print(bot.get_me())
 
@@ -21,7 +21,7 @@ def log(message, answer):
 	logs += str(datetime.now()) + "\n"
 	logs += "Message from {0} {1}. (id = {2})\nText - {3}\n".format(message.from_user.first_name,
 																 message.from_user.last_name,
-																 str(message.from_user.id),
+																 str(message.chat.id),
 																message.text)
 	if answer != "":
 		logs += "Answer: " + answer
