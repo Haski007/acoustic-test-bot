@@ -5,4 +5,4 @@
 ## Main goal of this bot - is to help user get minimal means of acoustic information protection.
 
 ### Bot is hosting on Orange Pi Zero
-<img src='/resources/Orange_Pi_Zero.jpg' width="200">
+<img src='/resources/Orange_Pi_Zero.jpg' width="350">
